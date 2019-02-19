@@ -4,4 +4,5 @@
 print("SUPER PROGRAMM!!!")
 
 print("Привет программист!")
-input()
+name = input("Ваше имя: ")
+print(name, ", добро пожаловать в мир Python!")
