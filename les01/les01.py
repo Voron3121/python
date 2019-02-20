@@ -1,8 +1,9 @@
 # coding: utf-8
 
+#Комментарии
+
 import os
 
-#Комментарии
 print("SUPER PROGRAMM!!!")
 print("Привет программист!")
 name = input("Ваше имя: ")
@@ -23,7 +24,7 @@ if answer == 'Y' or answer == 'y':
         print("Давай ", name, ", сделаем это.")
     elif do == 2:
         print("Очень много есть интересных книг, выбери сам.")
-    elif work == 3:
+    elif do == 3:
         print("Погрузись в свои мысли.")
     else:
         input("Ты придумал что то ещё?")
