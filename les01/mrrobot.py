@@ -6,6 +6,7 @@ import os
 import psutil  #стороний
 import shutil
 import sys
+import random
 
 def duplicate_file(filename):
     if os.path.isfile(filename):
@@ -17,6 +18,22 @@ def duplicate_file(filename):
         else:
             print("Возникла проблема копирования")
             return False
+
+def duble_files(dirname):
+    file_list = os.listdir(dirname)
+    i = 0
+    while i < len(file_list):
+        duplicate_file(file_list[i])
+        i += 1
+
+def random_delete(dirname):
+    file_list = os.listdir(dirname)
+    if file_list:
+        i = random.randrange(0, len(file_list))
+        fullname = os.path.join(dirname, file_list[i])
+        if os.path.isfile(fullname):
+            os.remove(fullname)
+            print("Файл ", fullname, " был случайно удалён")
 
 def sys_info():
     print("Вот что я знаю о системе:")
@@ -61,6 +78,7 @@ def main():
             print("[4] - продублировать файлы в текущей директории")
             print("[5] - продублировать указаный файл")
             print("[6] - удалить дубликаты файлов")
+            print("[7] - удалить случайный файл")
             do = int(input("Укажите номер действия: "))
 
             if do == 1:
@@ -71,11 +89,7 @@ def main():
                 print(psutil.pids())
             elif do == 4:
                 print("=Дублирование файлов в текущей директории=")
-                file_list = os.listdir()
-                i = 0
-                while i < len(file_list):
-                    duplicate_file(file_list[i])
-                    i += 1
+                duble_files(".")
             elif do == 5:
                 print("=Дублирование указанного файла=")
                 filename = input("Укажите название файла: ")
@@ -86,6 +100,10 @@ def main():
                 file_list = os.listdir(dirname)
                 count = del_duplicate(dirname)
                 print("Файлов удалено: ", count)
+            elif do == 7:
+                print("=Удаление случайного файла=")
+                dirname = input("Укажите имя директории: ")
+                random_delete(dirname)
             else:
                 input("Ты придумал что то ещё?")
 
